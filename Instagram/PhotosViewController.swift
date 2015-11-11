@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let urlString = "https://api.instagram.com/v1/media/popular?client_id=7937073861e0410fba7bf08d222832de"
     var photoData = [NSDictionary]()
@@ -17,8 +17,9 @@ class PhotosViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.rowHeight = 320
+        tableView.dataSource = self
+        tableView.delegate = self
+        //tableView.rowHeight = 32
 
         // Do any additional setup after loading the view.
         let url = NSURL(string: urlString);
@@ -27,7 +28,10 @@ class PhotosViewController: UIViewController {
             if(error == nil) {
                 let photoJson = try! NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSDictionary
                 self.photoData = photoJson["data"] as! [NSDictionary]
-                print(self.photoData)
+                //print(self.photoData)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
             }
         }
         task.resume()
@@ -37,6 +41,23 @@ class PhotosViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("photoCell", forIndexPath: indexPath) as! PhotoCell
+        let photo = photoData[indexPath.row]
+        cell.lbUserName.text = photo.valueForKeyPath("user.username") as! String
+        cell.imgPhoto.setImageWithURL(NSURL(string:photo.valueForKeyPath("images.thumbnail.url") as! String)!)
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return photoData.count
+    }
+    
     
 
     /*

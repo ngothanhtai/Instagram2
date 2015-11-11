@@ -14,6 +14,7 @@
 		447E581C1BF36F4D001DA54E /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447E581B1BF36F4D001DA54E /* PhotosViewController.swift */; };
 		447E581E1BF374F1001DA54E /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447E581D1BF374F1001DA54E /* PhotoCell.swift */; };
 		655C8C2D9A6BCB2BFDBE9716 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58893D578B7D29A7D34D2627 /* Pods_Instagram.framework */; };
+		DEE638881BF376590004A9E5 /* PhotoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE638871BF376590004A9E5 /* PhotoDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		58893D578B7D29A7D34D2627 /* Pods_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C87ED8ECB639291B9284D216 /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 		DC464F7F4B5FC67136382A48 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
+		DEE638871BF376590004A9E5 /* PhotoDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				447E581B1BF36F4D001DA54E /* PhotosViewController.swift */,
 				447E58091BF36C36001DA54E /* AppDelegate.swift */,
 				447E580D1BF36C36001DA54E /* Main.storyboard */,
+				DEE638871BF376590004A9E5 /* PhotoDetailsViewController.swift */,
 				447E58101BF36C36001DA54E /* Assets.xcassets */,
 				447E58121BF36C36001DA54E /* LaunchScreen.storyboard */,
 				447E58151BF36C36001DA54E /* Info.plist */,
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE638881BF376590004A9E5 /* PhotoDetailsViewController.swift in Sources */,
 				447E580A1BF36C36001DA54E /* AppDelegate.swift in Sources */,
 				447E581E1BF374F1001DA54E /* PhotoCell.swift in Sources */,
 				447E581C1BF36F4D001DA54E /* PhotosViewController.swift in Sources */,
