@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import AFNetworking
 
 class PhotosViewController: UIViewController {
 
     let urlString = "https://api.instagram.com/v1/media/popular?client_id=7937073861e0410fba7bf08d222832de"
     var photoData = [NSDictionary]()
     
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = 320
 
         // Do any additional setup after loading the view.
         let url = NSURL(string: urlString);
