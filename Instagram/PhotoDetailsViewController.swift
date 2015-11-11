@@ -8,10 +8,18 @@
 
 import UIKit
 
-class PhotoDetailsViewController: UIViewController {
+class PhotoDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    var selectedPhoto:NSDictionary?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
 
         // Do any additional setup after loading the view.
     }
@@ -32,4 +40,19 @@ class PhotoDetailsViewController: UIViewController {
     }
     */
 
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if selectedPhoto == nil
+        {
+            return UITableViewCell()
+        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("photoCellDetail", forIndexPath: indexPath) as! PhotoDetailCell
+        cell.imageView?.setImageWithURL(NSURL(string: (selectedPhoto?.valueForKeyPath("images.standard_resolution.url"))! as! String)!)
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
 }
