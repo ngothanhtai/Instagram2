@@ -69,7 +69,7 @@ class PhotosViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let photoViewDetail = segue.destinationViewController as! PhotoDetailsViewController
         let indexPath = tableView.indexPathForCell((sender as? UITableViewCell)!)
         let selectedPhoto = self.photoData[indexPath!.row]
-        photoViewDetail.selectedPhoto = selectedPhoto
+        photoViewDetail.photos = [selectedPhoto]
     }
 
 

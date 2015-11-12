@@ -12,19 +12,18 @@ class PhotoDetailsViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedPhoto:NSDictionary?
     var photos = [NSDictionary]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
         
-         photos = [selectedPhoto!]
-
-        // Do any additional setup after loading the view.
-       
+    }
+  
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
     }
     
     /*
