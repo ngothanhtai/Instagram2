@@ -11,8 +11,9 @@ import UIKit
 class PhotoDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var selectedPhoto:NSDictionary?
     
+    var selectedPhoto:NSDictionary?
+    var photos = [NSDictionary]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,16 +21,12 @@ class PhotoDetailsViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
+         photos = [selectedPhoto!]
 
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -39,20 +36,16 @@ class PhotoDetailsViewController: UIViewController, UITableViewDelegate, UITable
         // Pass the selected object to the new view controller.
     }
     */
-
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        if selectedPhoto == nil
-        {
-            return UITableViewCell()
-        }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCellWithIdentifier("photoCellDetail", forIndexPath: indexPath) as! PhotoDetailCell
-        cell.imageView?.setImageWithURL(NSURL(string: (selectedPhoto?.valueForKeyPath("images.standard_resolution.url"))! as! String)!)
+        let urlString = self.photos[indexPath.row].valueForKeyPath("images.standard_resolution.url") as! String
+        cell.imageView?.setImageWithURL(NSURL(string: urlString)!)
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return photos.count
     }
 }
